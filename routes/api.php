@@ -23,10 +23,12 @@ use App\Http\Controllers\AuthController;
 // });
 
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/login', [AuthController::class, 'login']);
-});
-
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [ApiKeyController::class, 'register']);
 Route::get('/product', [ProductController::class, 'get'])->middleware('checkBearer');
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/private/product', [ProductController::class, 'get']);
+});
 
