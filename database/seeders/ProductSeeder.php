@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\User;
+
 
 class ProductSeeder extends Seeder
 {
@@ -16,6 +18,8 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+
+        
 
         $productCategorySeeder = [
             [
@@ -59,6 +63,13 @@ class ProductSeeder extends Seeder
                 'warehouses_id' => rand(1,2),
             ]);
         }
+
+        User::create([
+            'name' => "Wisnu Pratama",
+            'email' => "wisnupratama@gmail.com",
+            'email_verified_at' => now(),
+            'password' => bcrypt('admin123'),
+        ]);
         
     }
 }
